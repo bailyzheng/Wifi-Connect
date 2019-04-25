@@ -12,7 +12,6 @@ import com.wifi.server.R;
 import com.wifi.server.base.BaseActivity;
 import com.wifi.server.dialogs.DialogEventListener;
 import com.wifi.server.dialogs.DialogHelper;
-import com.wifi.server.utils.Utils;
 import com.wifiscanner.listener.WifiP2PConnectionCallback;
 import com.wifiscanner.service.WifiP2PService;
 import com.wifiscanner.service.WifiP2PServiceImpl;
@@ -29,7 +28,7 @@ public class ReceiverActivity extends BaseActivity implements WifiP2PConnectionC
         setContentView(R.layout.activity_container);
 
         initToolBar();
-        updateTitle(getString(R.string.title_sender));
+        updateTitle(getString(R.string.title_receiver));
 
         wifiP2PService = new WifiP2PServiceImpl.Builder()
                 .setReceiver(this)
@@ -38,8 +37,8 @@ public class ReceiverActivity extends BaseActivity implements WifiP2PConnectionC
 
         wifiP2PService.onCreate();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                ReceiverFragment.newInstance()).commitAllowingStateLoss();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                ReceiverFragment.newInstance()).commitAllowingStateLoss();
     }
 
 
@@ -101,11 +100,8 @@ public class ReceiverActivity extends BaseActivity implements WifiP2PConnectionC
 
     @Override
     public void onPeerConnectionSuccess() {
-        Fragment fragment = getCurrentFragment();
-        if(fragment instanceof ReceiverFragment){
-            wifiP2PService.startDataTransfer(((ReceiverFragment)fragment).getMessage());
-            ((ReceiverFragment)fragment).onServerConnectSuccess();
-        }
+//        onConnectionCompleted();
+//        onDataTransferStarted();
     }
 
     @Override
@@ -126,8 +122,8 @@ public class ReceiverActivity extends BaseActivity implements WifiP2PConnectionC
 
     @Override
     public void onDataTransferring() {
-        Fragment fragment = getCurrentFragment();
-        if(fragment instanceof ReceiverFragment) ((ReceiverFragment)fragment).onDataTransferStarted();
+//        Fragment fragment = getCurrentFragment();
+//        if(fragment instanceof ReceiverFragment) ((ReceiverFragment)fragment).onDataTransferStarted();
     }
 
     @Override

@@ -51,7 +51,6 @@ public class DeviceListFragment extends BaseFragment implements RecyclerItemClic
         progressView = rootView.findViewById(R.id.scan_progress);
         animationView = rootView.findViewById(R.id.gif1);
 
-
         recyclerView = rootView.findViewById(R.id.scanned_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
         wifiListAdapter = new WifiListAdapter(activity, new ArrayList<WifiP2pDevice>());

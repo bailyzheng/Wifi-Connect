@@ -14,7 +14,7 @@
 
 
         <com.an.customfontview.CustomButton
-            android:id="@+id/btn_pay"
+            android:id="@+id/btn_receive"
             style="@style/GreenButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
 
 
         <com.an.customfontview.CustomButton
-            android:id="@+id/btn_receive"
+            android:id="@+id/btn_send"
             style="@style/GreenButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

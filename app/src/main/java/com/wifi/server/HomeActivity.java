@@ -10,23 +10,23 @@ import com.wifi.server.utils.NavigatorUtils;
 
 public class HomeActivity extends Activity implements View.OnClickListener {
 
-    private Button btnPay, btnReceive;
+    private Button btnSend, btnReceive;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        btnPay = findViewById(R.id.btn_pay);
-        btnPay.setOnClickListener(this);
-
         btnReceive = findViewById(R.id.btn_receive);
         btnReceive.setOnClickListener(this);
+
+        btnSend = findViewById(R.id.btn_send);
+        btnSend.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if(v == btnPay) {
+        if(v == btnSend) {
             NavigatorUtils.redirectToSenderScreen(this);
 
         } else if(v == btnReceive) {

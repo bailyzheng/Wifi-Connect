@@ -16,9 +16,6 @@ import com.wifi.server.dialogs.DialogHelper;
 import com.wifiscanner.listener.WifiP2PConnectionCallback;
 import com.wifiscanner.service.WifiP2PService;
 import com.wifiscanner.service.WifiP2PServiceImpl;
-import com.wifiscanner.utils.Utils;
-
-import java.util.Map;
 
 public class SenderActivity extends BaseActivity implements WifiP2PConnectionCallback, OnSenderUIListener, DialogEventListener {
 
@@ -31,7 +28,7 @@ public class SenderActivity extends BaseActivity implements WifiP2PConnectionCal
         setContentView(R.layout.activity_container);
 
         initToolBar();
-        updateTitle(getString(R.string.title_receiver));
+        updateTitle(getString(R.string.title_sender));
         redirectToDeviceListScreen();
 
         wifiP2PService = new WifiP2PServiceImpl.Builder()
@@ -156,8 +153,11 @@ public class SenderActivity extends BaseActivity implements WifiP2PConnectionCal
 
     @Override
     public void onPeerConnectionSuccess() {
-        onConnectionCompleted();
-        onDataTransferStarted();
+        Fragment fragment = getCurrentFragment();
+        if(fragment instanceof SenderFragment){
+            wifiP2PService.startDataTransfer(((SenderFragment)fragment).getMessage());
+            ((SenderFragment)fragment).onServerConnectSuccess();
+        }
     }
 
     @Override
